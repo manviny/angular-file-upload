@@ -1,7 +1,16 @@
 angular-file-upload
 ===================
 
+```php
+$tmp_file = $_FILES['file']['tmp_name'];
+$target_file = basename($_FILES['file']['name']);
+$upload_dir = wire('config')->paths->assets . "uploads/";
+move_uploaded_file($tmp_file, $upload_dir.$target_file);
+$data = $_FILES['data'];
 
+echo json_encode("salida: ". $data );
+return;
+```
 **Click here for <a href="http://angular-file-upload.appspot.com/" target="_blank">DEMO</a>**
 
 Lightweight Angular JS directive to upload files. Features:
