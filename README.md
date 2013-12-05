@@ -2,14 +2,23 @@ angular-file-upload
 ===================
 
 ```php
-$tmp_file = $_FILES['file']['tmp_name'];
-$target_file = basename($_FILES['file']['name']);
-$upload_dir = wire('config')->paths->assets . "uploads/";
-move_uploaded_file($tmp_file, $upload_dir.$target_file);
-$data = $_FILES['data'];
 
-echo json_encode("salida: ". $data );
+$resultado = "";
+
+$tmp_file = $_FILES['file']['tmp_name'];	
+$target_file = basename($_FILES['file']['name']);
+$fileName = $_POST['numeroPC'] . "_" . $_POST['tipoFile']. "." . end(explode('.', $target_file));
+
+$upload_dir = wire('config')->paths->assets . "uploads/";
+if (move_uploaded_file($tmp_file, $upload_dir.$fileName)) {
+    echo "el fichero se ha guardado correctamente" ;
+}
+else {
+    $data = $_FILES['data'];
+    echo json_encode("El fichero no se ha podido guardar, inténtalo de nuevo" );  
+}
 return;
+
 ```
 **Click here for <a href="http://angular-file-upload.appspot.com/" target="_blank">DEMO</a>**
 
