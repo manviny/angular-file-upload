@@ -7,7 +7,7 @@ $resultado = "";
 
 $tmp_file = $_FILES['file']['tmp_name'];	
 $target_file = basename($_FILES['file']['name']);
-$fileName = $_POST['numeroPC'] . "_" . $_POST['tipoFile']. "." . end(explode('.', $target_file));
+$fileName = $_POST['myObj'];
 
 $upload_dir = wire('config')->paths->assets . "uploads/";
 if (move_uploaded_file($tmp_file, $upload_dir.$fileName)) {
